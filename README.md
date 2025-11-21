@@ -1,20 +1,34 @@
 # GroundingDINO-hello
 
-## 前提
+GroundingDINOを使用した、テキストプロンプトベースの物体検出Streamlitアプリケーションです。
 
-- uv がインストール済み
+## 必要要件
 
-## モデルのダウンロード
+- uv（Pythonパッケージマネージャー）
 
-## 初期設定
+## セットアップ手順
+
+### 1. リポジトリのクローン
+
+```bash
+git clone https://github.com/ikomiki/hello-GrandingDINO
+cd hello-GrandingDINO
+```
+
+### 2. 依存関係のインストール
+
+このプロジェクトは`uv`を使用して依存関係を管理しています。
+
+```bash
+# 依存関係のインストール
+uv sync
+```
+
+### 3. GroundingDINOのインストール
 
 ```sh
-# 仮想環境の作成と有効化
-uv venv
-source .venv/bin/activate
-
-# まず、プロジェクトの依存関係（torchを含む）をインストール
-uv pip install -e .
+# 環境
+uv sync
 
 # GroundingDINOリポジトリをクローン
 git clone https://github.com/IDEA-Research/GroundingDINO.git
@@ -23,16 +37,22 @@ git clone https://github.com/IDEA-Research/GroundingDINO.git
 uv pip install --no-build-isolation -e GroundingDINO
 ```
 
+### 4. モデルのダウンロード
+
 ```sh
-wget https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth -O models/groundingdino_swint_ogc.pth
+mkdir -p models
+curl -L https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth \
+    -o models/groundingdino_swint_ogc.pth
 ```
 
-## 使用方法
+### 5. アプリケーションの起動
 
 ```sh
 # Streamlitアプリを起動
-streamlit run main.py
+uv run streamlit run main.py
 ```
+
+ブラウザが自動的に開き、アプリケーションが表示されます（通常は `http://localhost:8501`）。
 
 ## 注意事項
 
